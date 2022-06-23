@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_june2022/provider/counter.dart';
@@ -11,8 +12,13 @@ import 'cubit/weather_cubit.dart';
 import 'cubit/weather_repo.dart';
 import 'cubit/weather_view.dart';
 import 'extension__methods/extension_custom_methods.dart';
+import 'firebase/cloud_firestore/cloud_fs_send_data.dart';
+import 'firebase/firebase_operations.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(const MyApp());
 }
 
@@ -110,6 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder:(context)=>CustomExtnWidgets()));
                   },
                   child:const Text("extensions")),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder:(context)=>FBOperations()));
+                  },
+                  child:const Text("FBOperations")),
             ],
           ),
         ),
