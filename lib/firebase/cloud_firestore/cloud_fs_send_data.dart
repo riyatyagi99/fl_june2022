@@ -57,11 +57,13 @@ class _SendDataState extends State<SendData> {
 
             ElevatedButton(
                 onPressed: (){
+                  final pricee=price.text.trim();
+                  final namee=name.text.trim();
+                  if((pricee.isNotEmpty ) && (namee.isNotEmpty) ){
+                    ProductModel product=ProductModel(namee, pricee);
+                    insertData(product.toMap());
+                  }
 
-                  final pricee=price.text;
-                  final namee=name.text;
-                  ProductModel product=ProductModel(namee, pricee);
-                  insertData(product.toMap());
 
                 },
                 child:const Text("Add Item")),

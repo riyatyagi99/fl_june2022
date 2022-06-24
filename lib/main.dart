@@ -14,6 +14,7 @@ import 'cubit/weather_view.dart';
 import 'extension__methods/extension_custom_methods.dart';
 import 'firebase/cloud_firestore/cloud_fs_send_data.dart';
 import 'firebase/firebase_operations.dart';
+import 'mobx/counter.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -123,6 +124,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder:(context)=>FBOperations()));
                   },
                   child:const Text("FBOperations")),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder:(context)=>CounterWithMobX()));
+                  },
+                  child:const Text("MobX")),
             ],
           ),
         ),

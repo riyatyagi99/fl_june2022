@@ -39,12 +39,20 @@ dependencies:
   equatable: ^2.0.3
   cloud_firestore: ^3.1.18
   firebase_core: ^1.18.0
+  firebase_storage: ^10.2.18
+  image_picker: ^0.8.5+3
+  firebase_messaging: ^11.4.2
+  mobx: ^2.0.7+3
+  flutter_mobx: ^2.0.6+1
 
   #bloc: ^8.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  mobx_codegen:
+  build_runner:
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
