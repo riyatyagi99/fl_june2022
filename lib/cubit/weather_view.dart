@@ -1,4 +1,5 @@
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_june2022/cubit/weather_cubit.dart';
@@ -14,7 +15,7 @@ class WeatherView extends StatelessWidget {
         child: Container(
           alignment: Alignment.center,
 
-          child: BlocConsumer<WeatherCubit,WeatherState>(
+          child: BlocConsumer<WeatherCubit, WeatherState>(
             listener: (BuildContext context, state) {
               if(state is WeatherError){
                 Scaffold.of(context).showSnackBar(

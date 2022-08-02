@@ -5,6 +5,7 @@ import 'cloud_firestore/cloud_fs_send_data.dart';
 import 'fb_messaging/notifications.dart';
 import 'fb_storage/pic_storage.dart';
 import 'imagepicker.dart';
+import 'notifications/ios_notificationns.dart';
 
 class FBOperations extends StatelessWidget {
   const FBOperations({Key? key}) : super(key: key);
@@ -36,18 +37,16 @@ class FBOperations extends StatelessWidget {
                   print(token);
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder:(context)=>NotificationsFB()));
-                },
-                child:const Text("FBMessaging")),
-            ElevatedButton(
-                onPressed: () async{
-                  String? token = await FirebaseMessaging.instance.getToken();
-                  print(token);
-                  Navigator.push(
-                      context,
                       MaterialPageRoute(builder:(context)=>ImageOpn()));
                 },
                 child:const Text("Image C/G")),
+            ElevatedButton(
+                onPressed: () async{
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(builder:(context)=>NotificationsCode()));
+                },
+                child:const Text("IOS notifications")),
           ],
         ),
       ),

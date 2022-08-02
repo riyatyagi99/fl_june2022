@@ -44,6 +44,16 @@ dependencies:
   firebase_messaging: ^11.4.2
   mobx: ^2.0.7+3
   flutter_mobx: ^2.0.6+1
+  audioplayers:
+  file_picker:
+  syncfusion_flutter_charts: ^20.2.40
+  local_auth: ^2.1.0    #for faceId,touch,pin,code
+  image_cropper:
+  permission_handler: ^8.1.4+2
+  flutter_downloader:
+  path_provider: ^2.0.9
+  open_file: ^3.2.1
+
 
   #bloc: ^8.0.3
 
@@ -73,8 +83,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

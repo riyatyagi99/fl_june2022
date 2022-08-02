@@ -73,7 +73,7 @@ class _SendDataState extends State<SendData> {
                   builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
                      if(snapshot.hasError){
-                       return Text("There is some erroe");
+                       return const Text("There is some erroe");
                      }
                      if (snapshot.connectionState==ConnectionState.waiting){
                        return CircularProgressIndicator();

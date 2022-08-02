@@ -16,6 +16,17 @@ class CustomExtnWidgets extends StatelessWidget {
              Text("Riya Tyagi").center(),
              Text("Riya Tyagi").scaleEvenly(5),
              Text("Heyyy").scaleEvenly(5),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 Text("Heyyy"),
+                 Text("Heyyy"),
+                 Text("Heyyy"),
+                 Text("Heyyy"),
+                 Text("Heyyy"),
+                 Flexible(child: Text("Heyykjhgfdrsewsdfghjklhgfdsafghjkljhgfdsafghjklhgfdsadfghjkljhgfdsaghjky")),
+               ],
+             ),
              Text(name.capitalFirst())
           ],
         ),

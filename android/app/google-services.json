@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "238456430951",
-    "project_id": "junelearnings",
-    "storage_bucket": "junelearnings.appspot.com"
+    "project_number": "972549338944",
+    "project_id": "advancetopics-544cc",
+    "storage_bucket": "advancetopics-544cc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:238456430951:android:b5e79436070f89652fcfc2",
+        "mobilesdk_app_id": "1:972549338944:android:48ae4910ba6d8d270aeca5",
         "android_client_info": {
           "package_name": "com.example.fl_june2022"
         }
       },
       "oauth_client": [
         {
-          "client_id": "238456430951-pjtcofm3n6sj87lffd35rp4uhcjkbnh5.apps.googleusercontent.com",
+          "client_id": "972549338944-bqjugpe58pppj63vrk0dbt2c735amojg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCbjIik7Fya02ZpXhBkhY1bLgVEsUOHxVA"
+          "current_key": "AIzaSyBb6c0A9lxeDtcf26ivYSOIfZoinIKJ4oA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "238456430951-pjtcofm3n6sj87lffd35rp4uhcjkbnh5.apps.googleusercontent.com",
+              "client_id": "972549338944-bqjugpe58pppj63vrk0dbt2c735amojg.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

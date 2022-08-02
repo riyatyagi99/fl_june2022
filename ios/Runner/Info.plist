@@ -30,12 +30,6 @@
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>
 
-	<key>NSPhotoLibraryUsageDescription</key>
-    <string>This app wants to use the photo gallery</string>
-
-    <key>NSCameraUsageDescription</key>
-    <string>This app wants to use the camera</string>
-
 
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
