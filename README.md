@@ -14,9 +14,13 @@ There is a folder named "downloading_file" where I have shown all the steps to b
 
 
 Read the below blog for more clearity.
- Blog- https://medium.com/@tyagi.riyaa2022/downloading-files-in-flutter-fef1e9b73081
+
+Blog- https://medium.com/@tyagi.riyaa2022/downloading-files-in-flutter-fef1e9b73081
+ 
 ~ iOS and Android integration
+
 ~ Full Code
+
 ~ images of the result
 
 
