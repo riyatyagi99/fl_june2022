@@ -3,6 +3,7 @@ import 'dart:isolate';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
+
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -50,14 +51,17 @@ class _DownloadingFileState extends State<DownloadingFile> {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            InkWell(
-                onTap: () async{
-                  var link="https://www.abposters.com/harry-potter/";
-                  String fileName = link!.split('/').last;
-                  _download1(link);
-                },
-                child: Text("Download")),
+            Center(
+              child:ElevatedButton(
+                  onPressed: (){
+                    String link="https://www.abposters.com/harry-potter/";
+                    _download1(link);
+                  },
+
+                  child:const Text("Download")),
+            ),
           ],
         ),
 
