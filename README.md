@@ -1,12 +1,19 @@
-# fl_june2022
+# Downloading Files in Flutter
 
-A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+There is a folder named "files_downloading" where I have shown all the steps to be followed for the same.
 
-A few resources to get you started if this is your first Flutter project:
+
+~ Dependencies Used
+1.  flutter_downloader: ^1.8.0+1 ,
+2.  path_provider: ^2.0.9
+
+~ iOS and Android integration
+
+~ Full Code
+
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
