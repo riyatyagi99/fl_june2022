@@ -8,6 +8,13 @@ There is a folder named "downloading_file" where I have shown all the steps to b
 # Preview
 
 
+
+# Main Points
+ - Initialize Flutter downloader in main file
+
+- initState method code
+
+
 # Dependencies Used
 1.  flutter_downloader: ^1.8.0+1 ,
 2.  path_provider: ^2.0.9
