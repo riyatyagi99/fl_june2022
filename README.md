@@ -3,7 +3,7 @@
 
  Getting Started
 
-There is a folder named "files_downloading" where I have shown all the steps to be followed for the same.
+There is a folder named "downloading_file" where I have shown all the steps to be followed for the same.
 
 # Preview
 
