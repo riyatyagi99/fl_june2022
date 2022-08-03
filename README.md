@@ -7,7 +7,7 @@ There is a folder named "downloading_file" where I have shown all the steps to b
 
 # Preview
 
-https://imgflip.com/gif/6orhjr
+![6orhjr](https://user-images.githubusercontent.com/107858115/182571347-168f24b6-3d4b-417a-92de-8f126340b06e.gif)
 
 
 
