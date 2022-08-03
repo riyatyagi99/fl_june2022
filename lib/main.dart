@@ -8,6 +8,7 @@ import 'package:flutter_june2022/provider/multiprovider.dart';
 import 'package:flutter_june2022/stream_future_builder/stream_builder.dart';
 import 'package:provider/provider.dart';
 
+import 'downloading_file/file_download.dart';
 import 'local_auth/LocalAuth.dart';
 import 'extrass/bottomsheet_scrollable.dart';
 import 'cubit/weather_cubit.dart';
@@ -180,6 +181,13 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder:(context)=>ImageCropperr(title: "Image Cropping")));
                   },
                   child:const Text("Image cropper")),
+              ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder:(context)=>DownloadingFile()));
+                  },
+                  child:const Text("DownloadingFile")),
             ],
           ),
         ),
