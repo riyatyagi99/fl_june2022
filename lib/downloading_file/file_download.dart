@@ -56,10 +56,9 @@ class _DownloadingFileState extends State<DownloadingFile> {
             Center(
               child:ElevatedButton(
                   onPressed: (){
-                    String link="https://www.abposters.com/harry-potter/";
+                    String link=    "https://file-examples.com/storage/fe4d958fe962e9966a024a6/2017/10/file-sample_150kB.pdf" ;  //"https://www.abposters.com/harry-potter/";
                     _download1(link);
                   },
-
                   child:const Text("Download")),
             ),
           ],

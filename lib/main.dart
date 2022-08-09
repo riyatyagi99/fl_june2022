@@ -1,11 +1,14 @@
 import 'dart:developer';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_june2022/provider/counter.dart';
 import 'package:flutter_june2022/provider/multiprovider.dart';
+import 'package:flutter_june2022/signin_chat/google_signin.dart';
+import 'package:flutter_june2022/signin_chat/user_list_chat.dart';
 import 'package:flutter_june2022/stream_future_builder/stream_builder.dart';
 import 'package:provider/provider.dart';
 
@@ -58,6 +61,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+  User? firebaseUser = FirebaseAuth.instance.currentUser;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -191,6 +198,21 @@ class _MyHomePageState extends State<MyHomePage> {
                         MaterialPageRoute(builder:(context)=>DownloadingFile()));
                   },
                   child:const Text("DownloadingFile")),
+
+              ElevatedButton(
+                  onPressed: (){
+                    if (firebaseUser != null){
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder:(context)=>GoogleSignInBtn()));
+                  }else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(builder:(context)=>GoogleSignInBtn()));
+                    }
+                   },
+                  child:const Text("Sign-In and Chat")),
             ],
           ),
         ),
