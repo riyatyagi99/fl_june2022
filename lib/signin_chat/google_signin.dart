@@ -41,7 +41,7 @@ class _GoogleSignInBtnState extends State<GoogleSignInBtn> {
                     if (documents.isEmpty) {
                       // Update data to server if new user
                       FirebaseFirestore.instance.collection('users').doc(user.uid).set(
-                          { 'name': user.displayName, 'photoUrl': user.photoURL, 'id': user.uid });
+                          { 'name': user.displayName,'email':user.email, 'photoUrl': user.photoURL, 'id': user.uid, 'status':"unavailable"});
                     }
                   }
 
@@ -50,7 +50,7 @@ class _GoogleSignInBtnState extends State<GoogleSignInBtn> {
                   });
 
                   if (user != null) {
-                    Navigator.of(context).pushReplacement(
+                    Navigator.pushReplacement(context,
                       MaterialPageRoute(
                         builder: (context) => UserInfoScreen(
                           user: user,

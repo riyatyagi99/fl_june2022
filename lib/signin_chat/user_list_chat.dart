@@ -1,10 +1,202 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'authentication_class.dart';
 import 'chat_screen.dart';
 import 'google_signin.dart';
 
+/*class HomeScreen extends StatefulWidget {
+  HomeScreen ({Key? key, required User user}): _user = user,
+  super(key: key);
+
+  final User _user;
+
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
+  Map<String, dynamic>? userMap;
+  bool isLoading = false;
+  final TextEditingController _search = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late User _user;
+  bool _isSigningOut = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    setStatus("Online");
+    _user = widget._user;
+
+  }
+
+  void setStatus(String status) async {
+    await _firestore.collection('users').doc(_auth.currentUser!.uid).update({
+      "status": status,
+    });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // online
+      setStatus("Online");
+    } else {
+      // offline
+      setStatus("Offline");
+    }
+  }
+
+  String chatRoomId(String user1, String user2) {
+    if (user1[0].toLowerCase().codeUnits[0] >
+        user2.toLowerCase().codeUnits[0]) {
+      return "$user1$user2";
+    } else {
+      return "$user2$user1";
+    }
+  }
+
+  void onSearch() async {
+    FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+    setState(() {
+      isLoading = true;
+    });
+
+    await _firestore
+        .collection('users')
+        .where('email', isEqualTo: _search.text)
+        .get()
+        .then((value) {
+      setState(() {
+        print("${value.docs.length}       va;lueeeee");
+        userMap = value.docs[0].data();
+        isLoading = false;
+      });
+      print(userMap);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_user.displayName ?? ''),
+        actions: [
+          _isSigningOut
+              ? CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+          )
+              : ElevatedButton(
+              onPressed: () async {
+                setState(() {
+                  _isSigningOut = true;
+                });
+                await Authentication.signOut(context: context);
+                setState(() {
+                  _isSigningOut = false;
+                });
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => GoogleSignInBtn(),
+                  ),
+                );
+              },
+              child:Icon(Icons.exit_to_app)
+          ),
+        ],
+      ),
+      body: isLoading
+          ? Center(
+        child: Container(
+          height: size.height / 20,
+          width: size.height / 20,
+          child: CircularProgressIndicator(),
+        ),
+      )
+          : Column(
+        children: [
+          SizedBox(
+            height: size.height / 20,
+          ),
+          Container(
+            height: size.height / 14,
+            width: size.width,
+            alignment: Alignment.center,
+            child: Container(
+              height: size.height / 14,
+              width: size.width / 1.15,
+              child: TextField(
+                controller: _search,
+                decoration: InputDecoration(
+                  hintText: "Search",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: size.height / 50,
+          ),
+          ElevatedButton(
+            onPressed: onSearch,
+            child: Text("Search"),
+          ),
+          SizedBox(
+            height: size.height / 30,
+          ),
+          userMap != null
+              ? ListTile(
+            onTap: () {
+              String roomId = chatRoomId(
+                  _auth.currentUser!.displayName!,
+                  userMap!['name']);
+
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => Chat(
+                    chatRoomId: roomId,
+                    peerName: userMap?['name'],
+                  ),
+                ),
+              );
+            },
+            leading: Icon(Icons.account_box, color: Colors.black),
+            title: Text(
+              userMap!['name'],
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            subtitle: Text(userMap!['email']),
+            trailing: Icon(Icons.chat, color: Colors.black),
+          )
+              : Container(),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.group),
+        onPressed: () {
+           */ /*Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => GroupChatHomeScreen(),
+              ));*/ /*
+        },
+        )
+      );
+
+  }
+}*/
 
 class UserInfoScreen extends StatefulWidget {
   const UserInfoScreen({Key? key, required User user})
@@ -18,6 +210,7 @@ class UserInfoScreen extends StatefulWidget {
 }
 
 class _UserInfoScreenState extends State<UserInfoScreen> {
+  Map<String, dynamic>? userMap;
   late User _user;
   bool _isSigningOut = false;
 
@@ -33,70 +226,74 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title:Text("People List"),
-         centerTitle: true,
+        title: Text("People List"),
+        centerTitle: true,
         actions: [
           _user.photoURL != null
               ? Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ClipOval(
-            child: Material(
-                color:Colors.grey,
-                child: Image.network(
-                  _user.photoURL!,
-                  fit: BoxFit.fitHeight,
-                ),
-            ),
-          ),
-              )
+                  padding: const EdgeInsets.all(8.0),
+                  child: ClipOval(
+                    child: Material(
+                      color: Colors.grey,
+                      child: Image.network(
+                        _user.photoURL!,
+                        fit: BoxFit.fitHeight,
+                      ),
+                    ),
+                  ),
+                )
               : ClipOval(
-            child: Material(
-              color: Colors.grey.withOpacity(0.3),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Icon(
-                  Icons.person,
-                  size: 60,
-                  color:Colors.grey,
+                  child: Material(
+                    color: Colors.grey.withOpacity(0.3),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Icon(
+                        Icons.person,
+                        size: 60,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
+          SizedBox(
+            width: 5,
           ),
-          SizedBox(width: 5,),
           _isSigningOut
               ? CircularProgressIndicator(
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-          )
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                )
               : ElevatedButton(
-            onPressed: () async {
-              setState(() {
-                _isSigningOut = true;
-              });
-              await Authentication.signOut(context: context);
-              setState(() {
-                _isSigningOut = false;
-              });
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => GoogleSignInBtn(),
-                ),
-              );
-            },
-            child:Icon(Icons.exit_to_app)
-          ),
+                  onPressed: () async {
+                    setState(() {
+                      _isSigningOut = true;
+                    });
+                    await Authentication.signOut(context: context);
+                    setState(() {
+                      _isSigningOut = false;
+                    });
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => GoogleSignInBtn(),
+                      ),
+                    );
+                  },
+                  child: Icon(Icons.exit_to_app)),
         ],
       ),
-
       body: SafeArea(
         child: Center(
           child: StreamBuilder<QuerySnapshot>(
-            stream: FirebaseFirestore.instance.collection('users').limit(1).where('id', isNotEqualTo:(_user.uid)).snapshots(),
-            builder: (context,AsyncSnapshot<QuerySnapshot> snapshot) {
+            stream: FirebaseFirestore.instance
+                .collection('users')
+                .where('id', isNotEqualTo: (_user.uid))
+                .snapshots(),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.hasData) {
                 if ((snapshot.data?.docs.length ?? 0) > 0) {
                   return ListView.builder(
-                   // padding: EdgeInsets.all(10),
-                    itemBuilder: (context, index) => buildItem(context, snapshot.data?.docs[index]),
+                    // padding: EdgeInsets.all(10),
+                    itemBuilder: (context, index) =>
+                        buildItem(context, snapshot.data?.docs[index], _user),
                     itemCount: snapshot.data?.docs.length,
                     //controller: listScrollController,
                   );
@@ -108,7 +305,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
               } else {
                 return Center(
                   child: CircularProgressIndicator(
-                    color:Colors.deepOrange,
+                    color: Colors.deepOrange,
                   ),
                 );
               }
@@ -118,42 +315,97 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
       ),
     );
   }
-}
 
+  String chatRoomId(String user1, String user2) {
+    print("${user1[0].toLowerCase().codeUnits[0]}        111111111");
+    print("${user2[0].toLowerCase().codeUnits[0]}    2222222222");
+    if (user1[0].toLowerCase().codeUnits[0] > user2.toLowerCase().codeUnits[0]) {
 
-Widget buildItem(BuildContext context,DocumentSnapshot? doc){
-  return Flexible(
-      child: Column(
-        children: [
-          Container(
-            color: Colors.orange,
-          width: MediaQuery.of(context).size.width,
-           padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-            child: GestureDetector(
-              onTap: (){
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder:(context)=>Chat(peerId:doc?['id'],peerName: doc?['name'],)));
-              },
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Center(child: Text(doc?['name'])),
-                  CircleAvatar(
-                    radius:25,
-                    backgroundImage:NetworkImage(doc?['photoUrl']),
-                  ),
+      print("${user1[0].toLowerCase().codeUnits[0]}        111111111ifffff");
+      print("${user2[0].toLowerCase().codeUnits[0]}    2222222222ifffff");
+      return "$user1$user2";
+    } else {
+      print("${user1[0].toLowerCase().codeUnits[0]}        111111111elseeee");
+      print("${user2[0].toLowerCase().codeUnits[0]}    2222222222elseeeee");
+      return "$user2$user1";
+    }
+  }
 
-                ],
+  Future<String?> chatRoom(User user, DocumentSnapshot doc) async {
+    String? chatroom;
+    print("${user.uid}${doc['id']}");
+    var roomIdOne = '${user.uid}${doc['id']}';
+    var roomIdTwo = '${doc['id']}${user.uid}';
+    print("${doc['name']}${user.displayName} ");
+    //print("${FieldPath.documentId.}");
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection("chatroom")
+        .where(roomIdOne, isEqualTo: true)
+        .where(roomIdTwo, isEqualTo: true)
+        .get();
+
+    if (snapshot.docs.length > 0) {
+      print("Existsss");
+      var docData = snapshot.docs[0].data();
+      print("${docData} doccccccccccccccc");
+
+      chatroom = docData as String?;
+    } else {
+      print("doesnot exist");
+      String roomId = chatRoomId(user.uid, "${doc['id']}");
+
+      FirebaseFirestore.instance.collection("chatroom").doc(roomId);
+
+      chatroom = roomId;
+    }
+    return chatroom;
+  }
+
+  Widget buildItem(BuildContext context, DocumentSnapshot? doc, User user) {
+    return Flexible(
+        child: Column(
+          children: [
+            Container(
+              color: Colors.yellow,
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              child: GestureDetector(
+                onTap: () async {
+                  String? chatRoomId = await chatRoom(user, doc!);
+
+                  if (chatRoomId != null) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Chat(
+                              chatRoomId: chatRoomId,
+                              peerName: doc['name'],
+                            )));
+                  } else {
+                    Fluttertoast.showToast(msg: "There is smth wrong");
+                  }
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Center(child: Text(doc?['name'])),
+                    CircleAvatar(
+                      radius: 25,
+                      backgroundImage: NetworkImage(doc?['photoUrl']),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 20,)
-        ],
-        
-      ));
+            SizedBox(
+              height: 20,
+            )
+          ],
+        ));
+  }
 
 }
+
 
 
 //User Infolist
