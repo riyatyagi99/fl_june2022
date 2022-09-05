@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_june2022/provider/counter.dart';
 import 'package:flutter_june2022/provider/multiprovider.dart';
+import 'package:flutter_june2022/redux_state_management/redux.dart';
 import 'package:flutter_june2022/signin_chat/google_signin.dart';
 import 'package:flutter_june2022/signin_chat/user_list_chat.dart';
 import 'package:flutter_june2022/stream_future_builder/stream_builder.dart';
@@ -28,6 +29,7 @@ import 'firebase/firebase_operations.dart';
 import 'media_related/image_cropper.dart';
 import 'method_channels/battery_level.dart';
 import 'mobx/counter.dart';
+import 'package:redux/redux.dart';
 
 
 void main() async {
@@ -249,6 +251,16 @@ class _MyHomePageState extends State<MyHomePage> {
                               builder: (context) => AudioVideoCall()));
                     },
                     child: const Text("Communication")),
+                ElevatedButton(
+                    onPressed: () {
+                      final store = Store<int>(counterReducer, initialState: 0);
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReduxState(store: store,)));
+                    },
+                    child: const Text("Reduxxx")),
               ],
             ),
           ),

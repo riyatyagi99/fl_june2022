@@ -61,6 +61,7 @@ dependencies:
   geocoding: ^2.0.4
   geolocator: ^9.0.1
   agora_rtc_engine: ^5.3.0
+  flutter_redux: ^0.8.2
 
 
   #bloc: ^8.0.3
